@@ -1,1 +1,152 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap-grid.min.css';
+@import 'bootstrap/dist/css/bootstrap-utilities.min.css';
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800&display=swap');
+
+/*   Dark Theme */
+:root {
+  --bg-primary: #252525;
+  --bg-secondary: #111216;
+  --bg-card: #101216;
+  --bg-card-hover: #4f6939;
+  --text-primary: #f4f4f6;
+  --text-secondary: #8e95a2;
+  --text-muted: #7d828d;
+  --border-color: #1e2229;
+  --border-strong: #2c323d;
+  --accent-lime: #d5ff3fb4;
+  --accent-lime-muted: rgba(212, 255, 63, 0.12);
+  --accent-orange: #ff7a29;
+  --grid-line: #77864654;
+  --font-display: 'Space Grotesk', 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/*   Light Theme */
+[data-theme="light"] {
+  --bg-primary: #fff;
+  --bg-secondary: #e2e1db;
+  --bg-card: #f2f1ec;
+  --bg-card-hover: #79970cb4;
+  --text-primary: #121316;
+  --text-secondary: #585d68;
+  --text-muted: #8c92a0;
+  --border-color: #d1d0c7;
+  --border-strong: #b8b7ad;
+  --accent-lime: #6e8526;
+  --accent-lime-muted: rgba(184, 234, 22, 0.2);
+  --accent-orange: #f26815;
+  --grid-line: #5e6e2f5e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Technical Blueprint Grid */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 70px 70px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+::selection {
+  background: var(--accent-lime);
+  color: #000000;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-lime {
+  color: var(--accent-lime) !important;
+}
+
+section {
+  position: relative;
+  padding: 100px 0;
+  width: 100%;
+}
+
+/*   Hover and animation */
+
+.btn-brutalist:hover .btn-arrow,
+.btn-lime-talk:hover span:last-child,
+.blueprint-open-link:hover {
+  display: inline-block;
+  transform: translate(3px, -3px);
+  transition: transform 0.2s ease;
+}
+
+.blueprint-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.blueprint-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.toolkit-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.toolkit-cell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-lime-muted), transparent);
+  transition: left 0.5s ease;
+}
+
+.toolkit-cell:hover::after {
+  left: 100%;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+}
